@@ -1,5 +1,5 @@
 # DockerDNS
-DockerDNS ist ein virtuelles Docker-basiertes Netzwerk zu Veranschaulichung von DNS-Anfrage.
+DockerDNS ist ein virtuelles Docker-basiertes Netzwerk zu Veranschaulichung von DNS-Anfragen.
 
 ## Voraussetzungen
 * Docker Engine 1.13.0+

@@ -1,0 +1,22 @@
+$TTL	604800
+@	IN	SOA	ns.belag. admin.belag. (
+			      5		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+; name servers - NS records
+					IN	NS	ns.belag.
+kaese				IN	NS	ns.kaese.belag.
+wurst				IN	NS	ns.wurst.belag.
+aufstrich			IN	NS	ns.aufstrich.belag.
+
+; name servers - A records
+ns					IN	A	172.20.10.2
+ns.kaese			IN	A	172.20.10.10
+ns.wurst			IN	A	172.20.10.11
+ns.aufstrich		IN	A	172.20.10.12
+
+; A records
+

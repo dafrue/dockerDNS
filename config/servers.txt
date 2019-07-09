@@ -1,0 +1,7 @@
+172.20.10.1 root (172.20.10.1)
+172.20.10.2 ns.belag (172.20.10.2)
+172.20.10.10 ns.kaese.belag (172.20.10.10)
+172.20.10.11 ns.wurst.belag (172.20.10.11)
+172.20.10.12 ns.aufstrich.belag (172.20.10.12)
+172.20.10.20 ns.wurst.aufstrich.belag (172.20.10.20)
+172.20.10.20 ns.kaese.aufstrich.belag (172.20.10.21)

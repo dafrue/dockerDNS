@@ -1,0 +1,23 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	ns.aufstrich.belag. admin.aufstrich.belag. (
+			      5		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+; name servers - NS records
+					IN	NS	ns.aufstrich.belag.
+wurst				IN	NS	ns.wurst.aufstrich.belag.
+kaese				IN	NS	ns.kaese.aufstrich.belag.
+
+; name servers - A records
+ns					IN	A	172.20.10.12
+ns.wurst			IN	A	172.20.10.20
+ns.kaese			IN	A	172.20.10.21
+
+; A records
+mett				IN	A	172.20.0.10

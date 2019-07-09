@@ -1,0 +1,10 @@
+zone "wurst.aufstrich.belag" {
+	type master;
+	file "/etc/bind/zones/db.wurst.aufstrich.belag";
+};
+
+//zone "20.172.in-addr.arpa" {
+//	type master;
+//	file "/etc/bind/zones/db.172.20";
+//};
+

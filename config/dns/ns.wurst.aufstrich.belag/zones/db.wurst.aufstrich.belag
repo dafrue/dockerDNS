@@ -1,0 +1,16 @@
+$TTL	604800
+@	IN	SOA	ns.wurst.aufstrich.belag. admin.wurst.aufstrich.belag. (
+			      5		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+; name servers - NS records
+					IN	NS	ns.wurst.aufstrich.belag.
+
+; name servers - A records
+ns					IN	A	172.20.10.20
+
+; A records
+leber				IN	A	172.20.0.8

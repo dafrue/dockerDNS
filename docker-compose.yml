@@ -1,0 +1,145 @@
+version: "2.2"
+services:
+#======================================================================================
+#Command & Control
+#======================================================================================
+  cnc:
+    build: ./cnc
+    image: dockerdns-cnc:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.20.10
+    ports:
+      - 127.0.0.1:80:80
+    volumes:
+      - ./config/clients.txt:/app/config/clients.txt:ro
+      - ./logs:/logs
+#======================================================================================
+#Clients
+#======================================================================================    
+  client:
+    build: ./client
+    image: dockerdns-client:1.0
+    dns_search: .
+    networks:
+      - dnsbridge
+    volumes:
+      - ./config/servers.txt:/app/config/servers.txt:ro
+    scale: 9
+#======================================================================================
+#DNS Server
+#======================================================================================
+  root:
+    build: ./dns
+    image: dockerdns-ns:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.10.1
+    environment:
+      - NSLOGNAME=root
+    volumes:
+      - ./config/dns/root/named.conf.options:/etc/bind/named.conf.options
+      - ./config/dns/root/named.conf.local:/etc/bind/named.conf.local
+      - ./config/dns/root/zones:/etc/bind/zones
+      - ./config/dns/db.root:/etc/bind/db.root
+      - ./logs:/logs
+
+  ns.belag:
+    build: ./dns
+    image: dockerdns-ns:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.10.2
+    environment:
+      - NSLOGNAME=ns.belag
+    volumes:
+      - ./config/dns/ns.belag/named.conf.options:/etc/bind/named.conf.options
+      - ./config/dns/ns.belag/named.conf.local:/etc/bind/named.conf.local
+      - ./config/dns/ns.belag/zones:/etc/bind/zones
+      - ./config/dns/db.root:/etc/bind/db.root
+      - ./logs:/logs
+
+  ns.kaese.belag:
+    build: ./dns
+    image: dockerdns-ns:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.10.10
+    environment:
+      - NSLOGNAME=ns.kaese.belag
+    volumes:
+      - ./config/dns/ns.kaese.belag/named.conf.options:/etc/bind/named.conf.options
+      - ./config/dns/ns.kaese.belag/named.conf.local:/etc/bind/named.conf.local
+      - ./config/dns/ns.kaese.belag/zones:/etc/bind/zones
+      - ./config/dns/db.root:/etc/bind/db.root
+      - ./logs:/logs
+
+  ns.wurst.belag:
+    build: ./dns
+    image: dockerdns-ns:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.10.11
+    environment:
+      - NSLOGNAME=ns.wurst.belag
+    volumes:
+      - ./config/dns/ns.wurst.belag/named.conf.options:/etc/bind/named.conf.options
+      - ./config/dns/ns.wurst.belag/named.conf.local:/etc/bind/named.conf.local
+      - ./config/dns/ns.wurst.belag/zones:/etc/bind/zones
+      - ./config/dns/db.root:/etc/bind/db.root
+      - ./logs:/logs
+
+  ns.aufstrich.belag:
+    build: ./dns
+    image: dockerdns-ns:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.10.12
+    environment:
+      - NSLOGNAME=ns.aufstrich.belag
+    volumes:
+      - ./config/dns/ns.aufstrich.belag/named.conf.options:/etc/bind/named.conf.options
+      - ./config/dns/ns.aufstrich.belag/named.conf.local:/etc/bind/named.conf.local
+      - ./config/dns/ns.aufstrich.belag/zones:/etc/bind/zones
+      - ./config/dns/db.root:/etc/bind/db.root
+      - ./logs:/logs
+
+  ns.wurst.aufstrich.belag:
+    build: ./dns
+    image: dockerdns-ns:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.10.20
+    environment:
+      - NSLOGNAME=ns.wurst.aufstrich.belag
+    volumes:
+      - ./config/dns/ns.wurst.aufstrich.belag/named.conf.options:/etc/bind/named.conf.options
+      - ./config/dns/ns.wurst.aufstrich.belag/named.conf.local:/etc/bind/named.conf.local
+      - ./config/dns/ns.wurst.aufstrich.belag/zones:/etc/bind/zones
+      - ./config/dns/db.root:/etc/bind/db.root
+      - ./logs:/logs
+
+  ns.kaese.aufstrich.belag:
+    build: ./dns
+    image: dockerdns-ns:1.0
+    networks:
+      dnsbridge:
+        ipv4_address: 172.20.10.21
+    environment:
+      - NSLOGNAME=ns.kaese.aufstrich.belag
+    volumes:
+      - ./config/dns/ns.kaese.aufstrich.belag/named.conf.options:/etc/bind/named.conf.options
+      - ./config/dns/ns.kaese.aufstrich.belag/named.conf.local:/etc/bind/named.conf.local
+      - ./config/dns/ns.kaese.aufstrich.belag/zones:/etc/bind/zones
+      - ./config/dns/db.root:/etc/bind/db.root
+      - ./logs:/logs
+#======================================================================================
+#Netzwerk
+#======================================================================================  
+networks:
+  dnsbridge:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
+          ip_range: 172.20.0.0/24

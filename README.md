@@ -28,7 +28,7 @@ Dort befindet sich unter anderem eine Liste der Clients im Netzwerk. Klicken Sie
 Auf dem Interface des Clients können sie nun die aufzulösende Adresse eingeben und den DNS-Server auswählen, der sie bearbeiten soll. Der Button `Auflösen` schickt die DNS-Anfrage ab.
 
 ### Logging
-Mit dem Knopf `Merge` im C&C Interface (`localhost`) können Sie nun die Netzwerklogs ihrer Anfragen zusammenfassen.
+Mit dem Button `Merge` im C&C Interface (`localhost`) können Sie nun die Netzwerklogs ihrer Anfragen zusammenfassen.
 
 Der Ordner `logs` enthält die Netzwerklogs aus Sicht der einzelnen Nameserver sowie die Datei `merged_logs`, die den gesamten Netzwerkverkehr enthält.
 

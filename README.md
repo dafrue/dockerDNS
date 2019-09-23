@@ -65,9 +65,7 @@ Das Projekt ist standardmäßig mit dem folgenden Beispielnetzwerk konfiguriert:
 
 
 ## Konfiguration eigener Netzwerke
-Im folgenden Kapitel wird darauf eingegangen, wie DockerDNS mit benutzerdefinierten Netzwerken konfiguriert werden kann.
-
-Im folgenden Kapitel wird dazu der Inhalt der `docker-compose.yml` und des `config`-Ordners behandelt.
+Im folgenden Kapitel werden die wichtigsten Konfigurationsdateien von DockerDNS beschrieben, um das Erstellen und Verändern von Netzwerken zu veranschaulichen.
 
 ### `docker-compose.yml`
 Die `docker-compose.yml` enthält die Einstellungen und Start-Parameter für alle Container im Netzwerk.
@@ -103,7 +101,7 @@ Die Zeile `172.20.10.10 ns.kaese.belag (172.20.10.10)` beschreibt einen Nameserv
 #### Der `dns` Ordner
 In diesem Ordner liegen die Konfigurationsdateien der einzelnen Nameserver. Die Ordnerstruktur beeinflusst dabei nicht die Struktur des Netzwerks, sondern dient ausschließlich der Übersichtlichkeit.
 
-## Beispiel: Hinzufügen eines neuen Servers und Clients
+### Beispiel: Hinzufügen eines neuen Servers und Clients
 Im folgenden werden wir das Subnetz `marmelade.auftsrich.belag` sowie den Client `erbeer.marmelade.aufstrich.belag` zum Netzwerk hinzufügen. Zuerst sollten wir dazu die IP des neuen Servers festlegen. Der Einfachheit halber setzen wir das Muster des Beispielnetzwerks fort und geben unserem neuen Nameserver die Adresse `172.20.10.22`. Unser neuer Client erhält dynamische eine Adresse im in der `docker-compose.yml` definierten IP-Bereich. Da die Adressen bei `172.20.0.2` starten und es insgesamt unser zehnter Client ist, ist die Adresse `172.20.0.11`.
 
 ```
